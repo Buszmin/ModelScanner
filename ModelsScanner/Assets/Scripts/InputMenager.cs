@@ -60,7 +60,15 @@ public class InputMenager : MonoBehaviour
         else
             Debug.Log("Input file is empty");
     }
-    
+
+    void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+    }
+
     public void NextModel()
     {
         if (index == models.Count-1)
@@ -98,15 +106,14 @@ public class InputMenager : MonoBehaviour
     {
         canvas.SetActive(false);
         yield return new WaitForEndOfFrame();
-        ScreenCapture.CaptureScreenshot(Application.dataPath + "/Resources/Output/" + System.DateTime.Now.ToString("yyyy-MM-dd HH-mm-ss") + ".png");
-    //  UnityEditor.AssetDatabase.Refresh();
-        canvas.SetActive(true);
-    }
-
-
-    // Update is called once per frame
-    void Update()
-    {
         
+        if (!Directory.Exists(Application.dataPath + "/Output/"))
+        {
+            Directory.CreateDirectory(Application.dataPath + "/Output/");
+        }
+
+        ScreenCapture.CaptureScreenshot(Application.dataPath + "/Output/" + System.DateTime.Now.ToString("yyyy-MM-dd HH-mm-ss") + ".png");
+        //  UnityEditor.AssetDatabase.Refresh();
+        canvas.SetActive(true);
     }
 }
