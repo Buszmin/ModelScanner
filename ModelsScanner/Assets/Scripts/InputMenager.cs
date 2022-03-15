@@ -99,7 +99,7 @@ public class InputMenager : MonoBehaviour
         canvas.SetActive(false);
         yield return new WaitForEndOfFrame();
         ScreenCapture.CaptureScreenshot(Application.dataPath + "/Resources/Output/" + System.DateTime.Now.ToString("yyyy-MM-dd HH-mm-ss") + ".png");
-        UnityEditor.AssetDatabase.Refresh();
+    //  UnityEditor.AssetDatabase.Refresh();
         canvas.SetActive(true);
     }
 
